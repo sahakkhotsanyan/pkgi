@@ -1,0 +1,11 @@
+#! /bin/sh
+
+pacman -S php
+pacman -S curl
+pacman -S gcc
+pacman -S make
+mkdir ~/.pkgi
+cp -r ./* ~/.pkgi
+rm /bin/pkgi
+ln -s ~/.pkgi/pkgi /bin/pkgi 
+

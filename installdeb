@@ -1,0 +1,9 @@
+#! /bin/sh
+
+apt-get install php
+apt-get install curl
+apt-get install gcc
+apt-get install make
+mkdir ~/.pkgi
+cp -r ./* ~/.pkgi
+ln -s ~/.pkgi/pkgi /bin/pkgi 
