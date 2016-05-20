@@ -1,7 +1,11 @@
 # pkgi
 ## ARCH INSTALL
-###sudo chmod +x ./installarch 
-###sudo ./installarch
+######git clone https://github.com/sahakkhotsanyan/pkgi.git
+######cd pkgi*
+######sudo chmod +x ./installarch 
+######sudo ./installarch
 ## DEBIAN INSTALL
-###sudo chmod +x ./installdeb
-###sudo ./installdeb
+######git clone https://github.com/sahakkhotsanyan/pkgi.git
+######cd pkgi*
+######sudo chmod +x ./installdeb
+######sudo ./installdeb
