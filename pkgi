@@ -1,0 +1,28 @@
+#! /bin/php
+<?php
+$path = substr(system("realpath ".$_SERVER['PHP_SELF'].""), 0, -4);
+if(isset($_SERVER[ 'argv' ][ 1 ])) $action = $_SERVER[ 'argv' ][ 1 ];
+else $action = "-h";
+if(isset($_SERVER[ 'argv' ][ 2 ])) $pkgname = $_SERVER[ 'argv' ][ 2 ];
+if($action == "-h" || $action == "--help"){
+	echo "Help Window!!!\nYou can only install,not delete packages!!!\nFor installing type \"pkgi -i pkgname\"\nCOMMANDS\n--help , -h Show this help menu\n--update , -U  update database\n -i , --install install package\n";
+}
+if($action == "--update" || $action == "-U"){
+	exec("mkdir $path/database && mkdir ~/.pkgi/packages");
+	exec("curl -o $path/database.php https://raw.githubusercontent.com/sahakkhotsanyan/pkgi/packages/database/database.php");
+	exec("mv $path/database.php $path/database/database.php");
+}
+require "$path/database/database.php";
+if($action == "-i" || $action == "--install"){
+	if (!array_key_exists($pkgname, $pkgdb)){
+		echo "Package not found!!! please run this command \"pkgi -U\" or \"pkgi --update\"";
+	}
+	else if (array_key_exists($pkgname, $pkgdb)) {
+	$package = $pkgdb[$pkgname];
+		exec("curl -o $path/packages/$package https://raw.githubusercontent.com/sahakkhotsanyan/pkgi/packages/packages/$package");
+		$pkg = substr($package, 0, -4);
+		system("cd $path/packages && unzip $package && mv $pkg .$pkg");
+		system("cd $path/packages/.$pkg && make && make install");
+	}
+}
+?>
