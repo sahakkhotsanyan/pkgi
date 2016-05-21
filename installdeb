@@ -7,3 +7,4 @@ apt-get install make
 mkdir ~/.pkgi
 cp -r ./* ~/.pkgi
 ln -s ~/.pkgi/pkgi /bin/pkgi 
+chmod +x /bin/pkgi
